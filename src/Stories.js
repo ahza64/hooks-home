@@ -1,13 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useFetch } from './hooks'
 
 const Stories = () => {
-  const [stories, setStories] = useState([]);
 
-  useEffect(() => {
-    fetch('http://localhost:3005/topstories')
-      .then(response => response.json())
-      .then(json => setStories(json))
-  }, []);
+  const stories = useFetch('http://localhost:3005/topstories', [])
+
   return (
     <div className='Stories'>
       <h3>Stories</h3>
