@@ -5,13 +5,9 @@ function Joke() {
 
   useEffect(() => {
     // fetch('https://official-joke-api.appspot.com/jokes/random', {mode: 'no-cors'})
-    fetch('http://localhost:3005/jokes/random')
+    fetch('http://localhost:3004/jokes/random')
       .then(response => response.json())
-      .then(json => {
-        console.log('joke json', json)
-        setJoke(json);
-      })
-      .catch(error => console.log('request failed', error));
+      .then(json => setJoke(json))
   }, []);
 
   const { setup, punchline } = joke;
