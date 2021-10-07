@@ -1,10 +1,30 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import uuid from 'uuid/v4'
+
+const TASKS_STORAGE_KEY = 'TASKS_STORAGE_KEY';
+
+const storeTasks = (taskMap) => {
+  localStorage.setItem(
+    TASKS_STORAGE_KEY,
+    JSON.stringify(taskMap)
+  );
+}
+
+const readStoredTasks = () => {
+  const tasksMap = JSON.parse(localStorage.getItem(TASKS_STORAGE_KEY));
+
+  return tasksMap ? tasksMap : { tasks: [], completedTasks: [] };
+}
 
 const Tasks = () => {
   const [taskText, setTaskText] = useState('');
-  const [tasks, setTasks] = useState([]);
-  const [completedTasks, setCompletedTasks] = useState([]);
+  const storedTasks = readStoredTasks();
+  const [tasks, setTasks] = useState(storedTasks.tasks);
+  const [completedTasks, setCompletedTasks] = useState(storedTasks.completedTasks);
+
+  useEffect(() => {
+    storeTasks({ tasks, completedTasks });
+  })
 
   const updateTaskText = event => {
     setTaskText(event.target.value);
@@ -32,7 +52,6 @@ const Tasks = () => {
       <div className='form'>
         <input value={taskText} onChange={updateTaskText} type="text" />
         <button onClick={addTask}>Add Task</button>
-
       </div>
       <div className='task-list'>
         {
