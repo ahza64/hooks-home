@@ -89,7 +89,7 @@ import matrix87 from '../assets/matrix/87.png';
 import matrix88 from '../assets/matrix/88.png';
 import matrix89 from '../assets/matrix/89.png';
 
-export default [
+const Array = [
   matrix0,
   matrix1,
   matrix2,
@@ -181,3 +181,5 @@ export default [
   matrix88,
   matrix89,
 ];
+
+export default Array;
