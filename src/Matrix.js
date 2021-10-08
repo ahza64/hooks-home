@@ -1,22 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import MATRIX_FRAMES from './data/matrix'
+import { useDynamicTransition } from './hooks'
 
 const minimumDelay = 10;
 const minimumIncrement = 1;
 
 const Matrix = () => {
-  const [index, setIndex] = useState(0);
   const [delay, setDelay] = useState(500);
   const [increment, setIncrement] = useState(5);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex(storedIndex => {
-        return (storedIndex+increment)%MATRIX_FRAMES.length
-      })
-    }, delay)
-    return () => clearInterval(interval);
-  }, [delay, increment]);
+  const index = useDynamicTransition({
+    delay, increment, length: MATRIX_FRAMES.length
+  });
 
   const updateDelay = event => {
     const delay = Number(event.target.value);
@@ -29,17 +24,19 @@ const Matrix = () => {
 
     setIncrement(increment < minimumIncrement ? minimumIncrement : increment);
   }
-console.log('delay', delay, 'increment', increment);
+  console.log('delay', delay, 'increment', increment);
   return (
     <div className='Matrix'>
       <img src={MATRIX_FRAMES[index]} alt="matrix-animation"/>
       <div className='multiform'>
-        Frame transition delay (seconds):
-        <input type="number" onChange={updateDelay} />
-      </div>
-      <div>
-        Frame increment:
-        <input type="number" onChange={updateIncrement}/>
+        <div>
+          Frame transition delay (seconds):
+          <input type="number" onChange={updateDelay} />
+        </div>
+        <div>
+          Frame increment:
+          <input type="number" onChange={updateIncrement}/>
+        </div>
       </div>
     </div>
   )
