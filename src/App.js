@@ -36,7 +36,9 @@ function App() {
         <button onClick={searchQuery}>Search</button>
       </div>
       <hr/>
-      <Joke />
+      {/*
+        <Joke />
+      */}
       <hr/>
       <Tasks />
       <hr/>
@@ -49,7 +51,9 @@ function App() {
         </button>
       </div>
       <hr/>
-      <Stories />
+      {/*
+        <Stories />
+      */}
       <hr/>
       <Matrix />
     </div>

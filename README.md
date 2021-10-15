@@ -1,3 +1,17 @@
+the third party remote servers no longer work.
+
+the application is commented out the sections with those broken api calls.
+
+you can run a copy of the remote servers locally in
+the "news-proxy" and "official_joke_api" folders, so you can use that functionality.
+
+to start the news proxy from the news-proxy folder, yarn dev
+to start the official jokes api, from the official_joke_api folder, yarn dev
+
+then remove the comment bolcks for the JSX in src/App.js
+
+---everything below is from the create-react-app package---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
