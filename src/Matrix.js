@@ -24,7 +24,7 @@ const Matrix = () => {
 
     setIncrement(increment < minimumIncrement ? minimumIncrement : increment);
   }
-  console.log('delay', delay, 'increment', increment);
+  
   return (
     <div className='Matrix'>
       <img src={MATRIX_FRAMES[index]} alt="matrix-animation"/>

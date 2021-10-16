@@ -81,9 +81,6 @@ const Tasks = () => {
     dispatch({ type: TYPES.DELETE_TASK, task })
   }
 
-  console.log(tasks);
-  console.log(completedTasks);
-
   return (
     <div>
       <h3>Tasks</h3>
