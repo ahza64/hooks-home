@@ -1,7 +1,7 @@
 import { useFetch } from './hooks'
 
 const Joke = () => {
-  // fetch('https://official-joke-api.appspot.com/jokes/random', {mode: 'no-cors'})
+  // fetch('https://official-joke-api.appspot.com/jokes/random', {mode: 'no-cors'});
   const { setup, punchline } = useFetch('http://localhost:3004/jokes/random', {});
 
   return (
